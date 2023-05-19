@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="fabcohort",
-    version="0.1.0",
+    version="0.1.1",
     description="for cohort analysis",
     long_description=long_description,
     long_description_content_type="text/markdown",
