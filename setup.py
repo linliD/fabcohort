@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="fabcohort",
-    version="0.1.1",
+    version="0.2.1",
     description="for cohort analysis",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -36,5 +36,5 @@ setup(
     ],
     packages=["fab_cohort"],
     include_package_data=True,
-    install_requires=["pandas"]
+    install_requires=["pandas", "numpy"]
 )

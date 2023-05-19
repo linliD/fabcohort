@@ -56,7 +56,7 @@ class Cohort():
         # Perform cross join with time_series_df
         merged = unique_user_ids_df.assign(key=1).merge(time_series_df.assign(key=1)).drop('key', axis=1)
 
-        df_cross_join = merged.assign(key=1).merge(unique_segment.assign(key=1)).drop('key', axis=1)
+        df_cross_join = merged.assign(key=1).merge(unique_segment_df.assign(key=1)).drop('key', axis=1)
 
         df_cont = pd.merge(df_cross_join, df, how='left', on=['user_id', 'date', 'segment'])
         df_cont['count'].fillna(0, inplace=True)
@@ -81,7 +81,7 @@ class Cohort():
         indexes_df = pd.DataFrame({'cohort': np.arange(len(time_series_df))})
 
         merged = time_series_df.assign(key=1).merge(indexes_df.assign(key=1)).drop('key', axis=1)
-        cross_join_df = merged.assign(key=1).merge(unique_segment.assign(key=1)).drop('key', axis=1)
+        cross_join_df = merged.assign(key=1).merge(unique_segment_df.assign(key=1)).drop('key', axis=1)
         cross_join_df['cohort'] = 't' + cross_join_df['cohort'].astype(int).astype(str)
         cross_join_df.rename(columns={'date': 'created'}, inplace=True)
 
