@@ -2,11 +2,13 @@ language: python
 python:
   - 3.9
 
+env:
+  - OPENSSL_VERSION=1.1.1
+
 # Update pip to the latest version
 before_install:
   - python --version
   - pip install -U pip
-  - pip install urllib3==1.26.7 
 
 install:
   - pip install -r requirements.txt
