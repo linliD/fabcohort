@@ -13,7 +13,7 @@ class Cohort():
         unique_user_ids_df = pd.DataFrame({'user_id': unique_user_ids})
 
         # Perform cross join with time_series_df
-        df_cross_join = pd.merge(unique_user_ids_df, time_series_df, how='cross')
+        df_cross_join = unique_user_ids_df.assign(key=1).merge(time_series_df.assign(key=1)).drop('key', axis=1)
 
         # Left join df on df_cont
         df_cont = pd.merge(df_cross_join, df, how='left', on=['user_id', 'date'])
@@ -54,7 +54,9 @@ class Cohort():
         unique_segment_df = pd.DataFrame({'segment': unique_segment})
 
         # Perform cross join with time_series_df
-        df_cross_join = pd.merge(pd.merge(unique_user_ids_df, time_series_df, how='cross'), unique_segment_df, how='cross')
+        merged = unique_user_ids_df.assign(key=1).merge(time_series_df.assign(key=1)).drop('key', axis=1)
+
+        df_cross_join = merged.assign(key=1).merge(unique_segment.assign(key=1)).drop('key', axis=1)
 
         df_cont = pd.merge(df_cross_join, df, how='left', on=['user_id', 'date', 'segment'])
         df_cont['count'].fillna(0, inplace=True)
@@ -77,7 +79,9 @@ class Cohort():
 
         # refine the results if dataset too sparse
         indexes_df = pd.DataFrame({'cohort': np.arange(len(time_series_df))})
-        cross_join_df = pd.merge(pd.merge(time_series_df, indexes_df, how='cross'), unique_segment_df, how='cross')
+
+        merged = time_series_df.assign(key=1).merge(indexes_df.assign(key=1)).drop('key', axis=1)
+        cross_join_df = merged.assign(key=1).merge(unique_segment.assign(key=1)).drop('key', axis=1)
         cross_join_df['cohort'] = 't' + cross_join_df['cohort'].astype(int).astype(str)
         cross_join_df.rename(columns={'date': 'created'}, inplace=True)
 
