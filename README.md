@@ -9,7 +9,7 @@ pip install fabcohort
 ### Get started
 How to do cohort analysis with this lib:
 
-FUNCTION1: 
+#### **FUNCTION1**: 
 Vanilla cohort analysis 
 
 Pandas df.head(5) should look like - 
@@ -32,7 +32,7 @@ result = cohort.count_cohort(df)
 
 ```
 
-FUNCTION2: 
+#### **FUNCTION2**: 
 Cohort analysis by segments
 
 Pandas df.head(5) should look like - 
@@ -59,7 +59,7 @@ result.drop('segment', axis=1, inplace=True)
 
 ```
 
-FUNCTION3: 
+#### **FUNCTION3**: 
 Convert the count to percentage
 
 ```Python
