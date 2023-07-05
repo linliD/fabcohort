@@ -31,7 +31,7 @@ from fab_cohort import Cohort
 # Instantiate a Cohort object
 cohort = Cohort()
 
-# Call the count_cohort method, e.g., MS for month start, WS for week start
+# Call the count_cohort method, e.g., MS for month start, W-MON for week start
 result = cohort.count_cohort(df, frequency)
 
 ```
@@ -55,7 +55,7 @@ from fab_cohort import Cohort
 # Instantiate a Cohort object
 cohort = Cohort()
 
-# Call the count_cohort_segments method, e.g., MS for month start, WS for week start
+# Call the count_cohort_segments method, e.g., MS for month start, W-MON for week start
 result = cohort.count_cohort_segments(df, frequency)
 
 # (Optional) if you have multiple segments just parse it
