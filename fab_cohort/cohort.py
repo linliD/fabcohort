@@ -3,9 +3,9 @@ import numpy as np
 
 class Cohort():
     @staticmethod
-    def count_cohort(df):
+    def count_cohort(df, frequency):
         # Generate continuous time series
-        time_series = pd.date_range(start=min(df['date']), end=max(df['date']), freq='MS')
+        time_series = pd.date_range(start=min(df['date']), end=max(df['date']), freq=frequency)
         time_series_df = pd.DataFrame({'date': time_series})
 
         # Get unique user_id values from df
@@ -40,9 +40,9 @@ class Cohort():
     
     # for calculating the cohort filter by segments in the front-end
     @staticmethod
-    def count_cohort_segments(df):
+    def count_cohort_segments(df, frequency):
         # Generate continuous time series
-        time_series = pd.date_range(start=min(df['date']), end=max(df['date']), freq='MS')
+        time_series = pd.date_range(start=min(df['date']), end=max(df['date']), freq=frequency)
         time_series_df = pd.DataFrame({'date': time_series})
 
         # Get unique user_id values from df

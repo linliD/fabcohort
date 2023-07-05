@@ -22,7 +22,7 @@ class FabcohortTestCase(unittest.TestCase):
         df['count'] = 1
         
         # function output
-        result = self.cohort.count_cohort(df)
+        result = self.cohort.count_cohort(df, 'MS')
 
         # asserted output
         data = {

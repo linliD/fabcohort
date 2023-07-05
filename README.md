@@ -1,25 +1,29 @@
 # fabcohort
+
 A small demo library for a fab_cohort about cohort analysis
 
 ### Installation
+
 ```
 pip install fabcohort
 ```
 
 ### Get started
+
 How to do cohort analysis with this lib:
 
-#### **FUNCTION1**: 
-Vanilla cohort analysis 
+#### **FUNCTION1**:
 
-Pandas df.head(5) should look like - 
+Vanilla cohort analysis
+
+Pandas df.head(5) should look like -
 | user_id | date | count |
 | -------- | -------- | -------- |
-| 5fb507360cd5c0   | 2023-04-01   | 1   |
-| weg507360cwfw3   | 2023-03-01   | 1   |
-| 6001ef966c13w3   | 2023-02-01   | 1   |
-| weg507360cwfw3   | 2023-04-01   | 1   |
-| 6001ef966c13w3   | 2023-03-01   | 1   |
+| 5fb507360cd5c0 | 2023-04-01 | 1 |
+| weg507360cwfw3 | 2023-03-01 | 1 |
+| 6001ef966c13w3 | 2023-02-01 | 1 |
+| weg507360cwfw3 | 2023-04-01 | 1 |
+| 6001ef966c13w3 | 2023-03-01 | 1 |
 
 ```Python
 from fab_cohort import Cohort
@@ -27,22 +31,23 @@ from fab_cohort import Cohort
 # Instantiate a Cohort object
 cohort = Cohort()
 
-# Call the count_cohort method
-result = cohort.count_cohort(df)
+# Call the count_cohort method, e.g., MS for month start, WS for week start
+result = cohort.count_cohort(df, frequency)
 
 ```
 
-#### **FUNCTION2**: 
+#### **FUNCTION2**:
+
 Cohort analysis by segments
 
-Pandas df.head(5) should look like - 
+Pandas df.head(5) should look like -
 | user_id | date | segment | count |
 | -------- | -------- | -------- | -------- |
-| 5fb507360cd5c0   | 2023-04-01   | A,B   | 1   |
-| weg507360cwfw3   | 2023-03-01   | A,    | 1   |
-| 6001ef966c13w3   | 2023-02-01   | C,D   | 1   |
-| weg507360cwfw3   | 2023-04-01   | B,D   | 1   |
-| 6001ef966c13w3   | 2023-03-01   | A,B   | 1   |
+| 5fb507360cd5c0 | 2023-04-01 | A,B | 1 |
+| weg507360cwfw3 | 2023-03-01 | A, | 1 |
+| 6001ef966c13w3 | 2023-02-01 | C,D | 1 |
+| weg507360cwfw3 | 2023-04-01 | B,D | 1 |
+| 6001ef966c13w3 | 2023-03-01 | A,B | 1 |
 
 ```Python
 from fab_cohort import Cohort
@@ -50,8 +55,8 @@ from fab_cohort import Cohort
 # Instantiate a Cohort object
 cohort = Cohort()
 
-# Call the count_cohort_segments method
-result = cohort.count_cohort_segments(df)
+# Call the count_cohort_segments method, e.g., MS for month start, WS for week start
+result = cohort.count_cohort_segments(df, frequency)
 
 # (Optional) if you have multiple segments just parse it
 result[['segment1', 'segment2']] = result['segment'].str.split(',', expand=True)
@@ -59,7 +64,8 @@ result.drop('segment', axis=1, inplace=True)
 
 ```
 
-#### **FUNCTION3**: 
+#### **FUNCTION3**:
+
 Convert the count to percentage
 
 ```Python
