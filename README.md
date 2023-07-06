@@ -14,30 +14,6 @@ How to do cohort analysis with this lib:
 
 #### **FUNCTION1**:
 
-Vanilla cohort analysis
-
-Pandas df.head(5) should look like -
-| user_id | date | count |
-| -------- | -------- | -------- |
-| 5fb507360cd5c0 | 2023-04-01 | 1 |
-| weg507360cwfw3 | 2023-03-01 | 1 |
-| 6001ef966c13w3 | 2023-02-01 | 1 |
-| weg507360cwfw3 | 2023-04-01 | 1 |
-| 6001ef966c13w3 | 2023-03-01 | 1 |
-
-```Python
-from fab_cohort import Cohort
-
-# Instantiate a Cohort object
-cohort = Cohort()
-
-# Call the count_cohort method, e.g., MS for month start, W-MON for week start
-result = cohort.count_cohort(df, frequency)
-
-```
-
-#### **FUNCTION2**:
-
 Cohort analysis by segments
 
 Pandas df.head(5) should look like -
